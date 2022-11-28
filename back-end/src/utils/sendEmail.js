@@ -1,0 +1,15 @@
+import nodemailer from "nodemailer";
+
+export const transport = nodemailer.createTransport({
+    host: process.env.NODEMAILER_HOST,
+    port: process.env.NODEMAILER_PORT,
+    auth: {
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS
+    }
+
+});
+export const sendEmail = ({from,to,subject,text }) => {
+    const msg = {from, to, subject, text}
+    return transport.sendMail(msg)
+}

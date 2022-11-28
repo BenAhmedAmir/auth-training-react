@@ -13,8 +13,8 @@ export const loginRoute = {
 
         if (!user) return res.sendStatus(401)
 
-        const {_id: id, isVerified, passwordHashed, info} = user;
-        const isCorrect = await bcrypt.compare(password, passwordHashed);
+        const { _id: id, isVerified, passwordHash, info} = user;
+        const isCorrect = await bcrypt.compare(password, passwordHash);
 
         if (isCorrect) {
             jwt.sign({id, isVerified, email, info}, process.env.JWT_SECRET, {expiresIn: "2d"}, (err, token) => {
@@ -22,6 +22,7 @@ export const loginRoute = {
                         res.status(500).json(err)
                     }
                     res.status(200).json({token})
+                console.log(id)
                 });
         } else {
             res.sendStatus(401);
