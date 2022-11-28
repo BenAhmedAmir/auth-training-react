@@ -5,6 +5,7 @@ import { SignupPage } from "./pages/SignupPage";
 import { UserInfoPage } from "./pages/UserInfoPage";
 import {VerifyEmailPage} from "./pages/VerifyEmailPage";
 import {EmailVerification} from "./pages/EmailVerification";
+import {ForgotPasswordPage} from "./pages/ForgotPasswordPage";
 
 export const Routes = () => {
   return (
@@ -24,6 +25,9 @@ export const Routes = () => {
         </Route>
         <Route path="/signup">
           <SignupPage />
+        </Route>
+        <Route path="/forgot-password">
+          <ForgotPasswordPage/>
         </Route>
       </Switch>
     </Router>

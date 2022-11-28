@@ -33,7 +33,7 @@ export const LoginPage = () => {
         placeholder="your password"
       ></input>
       <button onClick={onLoginClicked} disabled={!emailValue || !password}>Log In</button>
-      <button onClick={() => history.push("/forget-password")}>
+      <button onClick={() => history.push("/forgot-password")}>
         Forget your password
       </button>
       <button onClick={() => history.push("/signup")}>
