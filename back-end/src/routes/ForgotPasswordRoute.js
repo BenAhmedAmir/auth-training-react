@@ -15,7 +15,7 @@ export const forgotPasswordRoute = {
                 email
             }, { $set : { passwordResetCode } })
         //mongoDB specifies how many documents were actually modified here
-        if (result.nModified > 0 ) {
+        if (result.nModified > 0 ) /* if there is a user in our database with that email*/ {
             try {
                 await sendEmail({
                     from: 'benahmedamir@hotmail.fr',

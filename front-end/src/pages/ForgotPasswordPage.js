@@ -15,7 +15,7 @@ export const ForgotPasswordPage = () => {
             setSuccess(true)
             setTimeout(() => {
                 history.push('/login')
-            })
+            }, 3000)
         }catch (e) {
             setErrorMessage(e.message)
         }

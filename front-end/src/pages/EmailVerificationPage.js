@@ -5,7 +5,7 @@ import {EmailVerificationFail} from "../components/EmailVerificationFail";
 import {EmailVerificationSuccess} from "../components/EmailVerificationSuccess";
 import axios from "axios";
 
-export const EmailVerification = () => {
+export const EmailVerificationPage = () => {
 
     const [isLoading,setIsLoading] = useState(true)
     const [isSuccess,setIsSuccess] = useState(false)
@@ -15,10 +15,11 @@ export const EmailVerification = () => {
     useEffect(() =>{
         const loadVerification = async () => {
             try{
-                const response = axios.put('/api/verify-email')
+                const response = await axios.put('/api/verify-email', {verificationString})
                 const { token } = response.data
                 setToken(token)
                 setIsSuccess(true)
+                console.log(isSuccess)
                 setIsLoading(false)
             }catch (e) {
                 console.log(e)
@@ -28,7 +29,7 @@ export const EmailVerification = () => {
         }
         loadVerification()
     }, [setToken, verificationString])
-
+    console.log("outside",isSuccess)
     if(isLoading) return <p>Loading ...</p>
 
     if(!isSuccess) return <EmailVerificationFail/>
